@@ -278,6 +278,45 @@
       height: 240px;
       object-fit: cover;
       display: block;
+      cursor: zoom-in;
+    }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(17, 24, 39, 0.88);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      z-index: 9999;
+    }
+
+    .lightbox.open {
+      display: flex;
+    }
+
+    .lightbox img {
+      max-width: min(1100px, 95vw);
+      max-height: 88vh;
+      border-radius: 18px;
+      box-shadow: 0 24px 50px rgba(0,0,0,0.35);
+      background: white;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 18px;
+      right: 22px;
+      background: white;
+      color: var(--text);
+      border: 0;
+      border-radius: 999px;
+      width: 42px;
+      height: 42px;
+      font-size: 1.3rem;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
     }
 
     .artifact-body {
@@ -411,15 +450,13 @@
         </div>
 
         <div class="hero-side">
-          <div class="stat-card">
-            <div class="stat-label">Teaching in practice</div>
-            <div class="stat-value" style="font-size:1.3rem;">E-glass video example</div>
-            <div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%; margin-top:12px;">
-              <iframe src="https://ntc.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=77e5eddf-7227-474e-bd28-b081016c5b57&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=true&interactivity=all" style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 100%; height: 100%; box-sizing: border-box; border-radius:16px;" allowfullscreen allow="autoplay" aria-label="Panopto Embedded Video Player"></iframe>
-            </div>
-            <p style="margin-top:10px; color:var(--muted); font-size:0.9rem;">Example of using e-glass technology to create engaging, student-friendly instructional videos.</p>
+          <div class="profile-card stat-card">
+            <img class="profile-image" src="Watson_headshot.jpg" alt="Headshot of Sarah Watson" />
+            <div class="stat-label">Presented by</div>
+            <div class="stat-value" style="font-size:1.35rem;">Sarah Watson</div>
           </div>
         </div>
+      </div>
       </div>
           <div class="stat-card">
             <div class="stat-label">Student Experience</div>
@@ -443,111 +480,49 @@
       <div class="container">
         <div class="section-header">
           <div>
-            <h2>Portfolio highlights</h2>
-            <p>Instead of walking through every item, this view focuses on the strongest examples from each area.</p>
+            <h2>Highlights</h2>
+            <p>This section focuses on the areas that best capture my work this year, student-centered teaching, practical course design, and broader leadership and community engagement.</p>
           </div>
         </div>
 
-        <div class="category-tabs" role="tablist" aria-label="Portfolio categories">
-          <button class="tab active" data-panel="student">Student Experience</button>
-          <button class="tab" data-panel="design">Course Design</button>
-          <button class="tab" data-panel="impact">Broader Impact</button>
+        <div class="cards">
+          <article class="card">
+            <h3>Student-centered teaching and support</h3>
+            <p>My teaching focused on building belonging, giving meaningful feedback, and using active learning to help students feel supported, challenged, and capable of growth.</p>
+            <div class="pill-list">
+              <span class="pill">Belonging</span>
+              <span class="pill">Feedback</span>
+              <span class="pill">Active learning</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>Course design and innovation</h3>
+            <p>I redesigned courses to be more practical, more intuitive, and more engaging, while also exploring tools like H5P, e-glass, and AI in ways that stayed connected to student need.</p>
+            <div class="pill-list">
+              <span class="pill">Redesign</span>
+              <span class="pill">H5P</span>
+              <span class="pill">AI + e-glass</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>Leadership, mentoring, and community engagement</h3>
+            <p>Beyond the classroom, I contributed through WTCS Voices, dual credit mentoring, scholarship review, faculty support, and community work that reflects the same student-centered values.</p>
+            <div class="pill-list">
+              <span class="pill">WTCS Voices</span>
+              <span class="pill">Mentoring</span>
+              <span class="pill">Community</span>
+            </div>
+          </article>
         </div>
 
-        <div id="student" class="panel active">
-          <div class="cards">
-            <article class="card">
-              <h3>Connection builds confidence</h3>
-              <p>Strong communication, regular presence, and personalized feedback helped students feel supported, seen, and capable.</p>
-              <div class="pill-list">
-                <span class="pill">Announcements</span>
-                <span class="pill">Email support</span>
-                <span class="pill">Student confidence</span>
-              </div>
-            </article>
-            <article class="card">
-              <h3>Active and engaging learning</h3>
-              <p>Interactive strategies like H5P, scaffolded projects, escape rooms, and collaborative tools pushed learning beyond passive content consumption.</p>
-              <div class="pill-list">
-                <span class="pill">H5P</span>
-                <span class="pill">Padlet</span>
-                <span class="pill">Escape rooms</span>
-              </div>
-            </article>
-            <article class="card">
-              <h3>Structure supports success</h3>
-              <p>Clear modules, intentional pacing, and flexible formats supported diverse learners while maintaining high expectations.</p>
-              <div class="pill-list">
-                <span class="pill">Scaffolding</span>
-                <span class="pill">Clear modules</span>
-                <span class="pill">Diverse learners</span>
-              </div>
-            </article>
+        <div class="spotlight" style="margin-top:24px;">
+          <strong>Teaching in practice</strong>
+          <div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%; margin-top:12px;">
+            <iframe src="https://ntc.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=77e5eddf-7227-474e-bd28-b081016c5b57&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=true&interactivity=all" style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 100%; height: 100%; box-sizing: border-box; border-radius:16px;" allowfullscreen allow="autoplay" aria-label="Panopto Embedded Video Player"></iframe>
           </div>
-        </div>
-
-        <div id="design" class="panel">
-          <div class="cards">
-            <article class="card">
-              <h3>Cents &amp; Sensibility redesign</h3>
-              <p>The course shifted toward practical financial decision-making, scenario-based learning, and a capstone personal financial plan.</p>
-              <div class="pill-list">
-                <span class="pill">Real-world application</span>
-                <span class="pill">Financial wellness</span>
-                <span class="pill">Capstone</span>
-              </div>
-            </article>
-            <article class="card">
-              <h3>College 101 improvements</h3>
-              <p>Competencies were streamlined, assessment variety expanded, and H5P activities added to improve clarity and engagement.</p>
-              <div class="pill-list">
-                <span class="pill">Simplified competencies</span>
-                <span class="pill">Formative learning</span>
-                <span class="pill">Course refresh</span>
-              </div>
-            </article>
-            <article class="card">
-              <h3>Innovation with AI</h3>
-              <p>AI pilots and tools were used with purpose, to create more personalized practice, feedback, accessibility, and student support.</p>
-              <div class="pill-list">
-                <span class="pill">LearnWise</span>
-                <span class="pill">Cengage AI</span>
-                <span class="pill">Sora + Python</span>
-              </div>
-            </article>
-          </div>
-        </div>
-
-        <div id="impact" class="panel">
-          <div class="cards">
-            <article class="card">
-              <h3>Support across systems</h3>
-              <p>Dual credit mentoring, College 101 work, and high school instruction extended learner support beyond a single classroom.</p>
-              <div class="pill-list">
-                <span class="pill">Dual credit</span>
-                <span class="pill">Mentoring</span>
-                <span class="pill">K-12 partnership</span>
-              </div>
-            </article>
-            <article class="card">
-              <h3>Leadership and collaboration</h3>
-              <p>Cross-program work, faculty support, and advisory participation helped connect general education to broader institutional goals.</p>
-              <div class="pill-list">
-                <span class="pill">Faculty mentoring</span>
-                <span class="pill">Program health</span>
-                <span class="pill">Collaboration</span>
-              </div>
-            </article>
-            <article class="card">
-              <h3>Community engagement</h3>
-              <p>Service through local leadership and community partnerships reflected a broader commitment to belonging, advocacy, and civic impact.</p>
-              <div class="pill-list">
-                <span class="pill">City Council</span>
-                <span class="pill">MOSAIC</span>
-                <span class="pill">Community partnerships</span>
-              </div>
-            </article>
-          </div>
+          <p style="margin-top:12px; color:var(--muted);">Example of using e-glass technology to create engaging, student-friendly instructional videos.</p>
         </div>
       </div>
     </section>
@@ -585,7 +560,7 @@
           </article>
 
           <article class="artifact-card">
-            <img src="1000033979.jpg" alt="Group photo from WTCS Voices" />
+            <img src="1000033979.jpg" alt="Group photo from WTCS Voices" class="lightbox-trigger" alt="Group photo from WTCS Voices" />
             <div class="artifact-body">
               <h3>Leadership and WTCS Voices artifact</h3>
               <p>Use this to talk about statewide collaboration, visibility, and how your work connects to broader student success conversations across the system.</p>
@@ -611,7 +586,7 @@
 
         <div class="artifact-grid">
           <article class="artifact-card">
-            <img src="1000002437.jpg" alt="Photo of two people smiling next to a costumed fox mascot" />
+            <img src="1000002437.jpg" alt="Photo of two people smiling next to a costumed fox mascot" class="lightbox-trigger" alt="Photo of two people smiling next to a costumed fox mascot" />
             <div class="artifact-body">
               <h3>WTCS Voices, collaboration in action</h3>
               <p><strong>Caption:</strong> This moment captures the energy of statewide collaboration and the visibility that comes from sharing student-centered ideas beyond my own campus.</p>
@@ -627,7 +602,7 @@
           </article>
 
           <article class="artifact-card">
-            <img src="Golf outing 1.jpg" alt="Group photo on a golf course during a community event" />
+            <img src="Golf outing 1.jpg" alt="Group photo on a golf course during a community event" class="lightbox-trigger" alt="Group photo on a golf course during a community event" />
             <div class="artifact-body">
               <h3>Community outreach and relationship building</h3>
               <p><strong>Caption:</strong> Community-facing work matters because connection, visibility, and partnership strengthen both student opportunity and institutional presence.</p>
@@ -637,7 +612,7 @@
 
         <div class="artifact-grid" style="margin-top:18px;">
           <article class="artifact-card">
-            <img src="ChatGPT Image Jan 23, 2026, 02_38_33 PM.png" alt="Illustration of Sarah Watson with a friendly robot having coffee" />
+            <img src="ChatGPT Image Jan 23, 2026, 02_38_33 PM.png" alt="Illustration of Sarah Watson with a friendly robot having coffee" class="lightbox-trigger" alt="Illustration of Sarah Watson with a friendly robot having coffee" />
             <div class="artifact-body">
               <h3>AI with warmth and curiosity</h3>
               <p><strong>Caption:</strong> I wanted my AI exploration to feel practical and human, grounded in support, experimentation, and helping students engage with new tools without intimidation.</p>
@@ -645,7 +620,7 @@
           </article>
 
           <article class="artifact-card">
-            <img src="Podcast photo 5.png" alt="Eco no Convo podcast graphic" />
+            <img src="Podcast photo 5.png" alt="Eco no Convo podcast graphic" class="lightbox-trigger" alt="Eco no Convo podcast graphic" />
             <div class="artifact-body">
               <h3>Creative ways to teach economics</h3>
               <p><strong>Caption:</strong> This visual reflects my interest in making content more accessible and memorable through media, storytelling, and design choices that invite students in.</p>
@@ -653,7 +628,7 @@
           </article>
 
           <article class="artifact-card">
-            <img src="Sarah Watson Nutitional Informaiton.png" alt="Creative poster titled Sarah Watson Civic Changemaker Blend" />
+            <img src="Sarah Watson Nutitional Informaiton.png" alt="Creative poster titled Sarah Watson Civic Changemaker Blend" class="lightbox-trigger" alt="Creative poster titled Sarah Watson Civic Changemaker Blend" />
             <div class="artifact-body">
               <h3>Personal voice and leadership identity</h3>
               <p><strong>Caption:</strong> This playful piece shows the values that run through my work, care, civic commitment, humor, resilience, and a real investment in people and community.</p>
@@ -713,6 +688,11 @@
     </div>
   </footer>
 
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close image">×</button>
+    <img id="lightboxImage" src="" alt="Expanded portfolio image" />
+  </div>
+
   <script>
     const tabs = document.querySelectorAll('.tab');
     const panels = document.querySelectorAll('.panel');
@@ -725,8 +705,37 @@
         panels.forEach(panel => panel.classList.remove('active'));
 
         tab.classList.add('active');
-        document.getElementById(target).classList.add('active');
+        const panel = document.getElementById(target);
+        if (panel) panel.classList.add('active');
       });
+    });
+
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('lightboxImage');
+    const lightboxClose = document.getElementById('lightboxClose');
+    const triggers = document.querySelectorAll('.lightbox-trigger');
+
+    triggers.forEach(img => {
+      img.addEventListener('click', () => {
+        lightboxImage.src = img.src;
+        lightboxImage.alt = img.alt;
+        lightbox.classList.add('open');
+        lightbox.setAttribute('aria-hidden', 'false');
+      });
+    });
+
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      lightbox.setAttribute('aria-hidden', 'true');
+      lightboxImage.src = '';
+    }
+
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox();
     });
   </script>
 </body>
