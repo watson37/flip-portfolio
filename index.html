@@ -119,6 +119,21 @@
       gap: 14px;
     }
 
+    .profile-card {
+      text-align: center;
+    }
+
+    .profile-image {
+      width: 100%;
+      max-width: 220px;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 24px;
+      display: block;
+      margin: 0 auto 14px;
+      box-shadow: 0 14px 30px rgba(31,41,55,0.12);
+    }
+
     .stat-card {
       background: rgba(255,255,255,0.9);
       border: 1px solid rgba(255,255,255,0.9);
@@ -243,6 +258,42 @@
       font-weight: 700;
     }
 
+    .artifact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .artifact-card {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 10px 24px rgba(31,41,55,0.06);
+    }
+
+    .artifact-card img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .artifact-body {
+      padding: 18px;
+    }
+
+    .artifact-body h3 {
+      margin: 0 0 8px;
+      font-size: 1.08rem;
+    }
+
+    .artifact-body p {
+      margin: 0 0 14px;
+      color: var(--muted);
+    }
+
     .timeline {
       display: grid;
       gap: 14px;
@@ -263,6 +314,33 @@
     .timeline-item .time {
       font-weight: 800;
       color: var(--accent);
+    }
+
+    .starter-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .starter-card {
+      background: linear-gradient(135deg, rgba(91,110,225,0.08), rgba(139,92,246,0.06));
+      border: 1px solid rgba(91,110,225,0.12);
+      border-radius: 24px;
+      padding: 22px;
+    }
+
+    .starter-card h3 {
+      margin: 0 0 12px;
+    }
+
+    .starter-card ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .starter-card li {
+      margin-bottom: 10px;
     }
 
     .spotlight {
@@ -290,6 +368,8 @@
     @media (max-width: 920px) {
       .hero-card,
       .cards,
+      .artifact-grid,
+      .starter-grid,
       .timeline-item {
         grid-template-columns: 1fr;
       }
@@ -299,7 +379,8 @@
       .hero-card,
       .card,
       .timeline-item,
-      .spotlight {
+      .spotlight,
+      .starter-card {
         padding: 20px;
       }
 
@@ -323,10 +404,16 @@
           <div class="cta-row">
             <a class="btn btn-primary" href="#highlights">Explore highlights</a>
             <a class="btn btn-secondary" href="#presentation">15-minute talk flow</a>
+            <a class="btn btn-secondary" href="https://ntc0-my.sharepoint.com/:w:/g/personal/watson_ntc_edu/IQBQN28dTFU4Spi25S2hbBBWAVE0neCBsEod4a6b0Wt9yjs?e=owut4c" target="_blank" rel="noopener noreferrer">Open full portfolio</a>
           </div>
         </div>
 
         <div class="hero-side">
+          <div class="profile-card stat-card">
+            <img class="profile-image" src="Watson_headshot.jpg" alt="Headshot of Sarah Watson" />
+            <div class="stat-label">Presented by</div>
+            <div class="stat-value" style="font-size:1.35rem;">Sarah Watson</div>
+          </div>
           <div class="stat-card">
             <div class="stat-label">Presentation lens</div>
             <div class="stat-value">3 focus areas</div>
@@ -472,35 +559,35 @@
             <div class="time">0–2 min</div>
             <div>
               <strong>Set the frame</strong>
-              <div>Introduce the throughline: student-centered design, course design, and broader impact.</div>
+              <div>Try: “I pulled a few highlights from each main area so I could focus on what mattered most this year, rather than walking through every line of the portfolio.”</div>
             </div>
           </div>
           <div class="timeline-item">
-            <div class="time">2–6 min</div>
+            <div class="time">2–5 min</div>
             <div>
               <strong>Student Experience</strong>
-              <div>Highlight communication, engagement strategies, and how structure builds confidence and persistence.</div>
+              <div>Try: “In teaching, one of my biggest priorities was building a learning environment where students felt supported, challenged, and able to grow.”</div>
             </div>
           </div>
           <div class="timeline-item">
-            <div class="time">6–10 min</div>
+            <div class="time">5–9 min</div>
             <div>
               <strong>Course Design</strong>
-              <div>Focus on practical redesign work, simplified pathways, and using innovation with purpose.</div>
+              <div>Try: “In course design, I focused on making learning more practical, more intuitive, and more connected to how students actually use these skills.”</div>
             </div>
           </div>
           <div class="timeline-item">
-            <div class="time">10–13 min</div>
+            <div class="time">9–12 min</div>
             <div>
               <strong>Broader Impact</strong>
-              <div>Show how mentoring, partnerships, and service extend student success beyond the classroom.</div>
+              <div>Try: “Outside the classroom, I looked for ways to extend that same student-centered focus through collaboration, mentoring, and community engagement.”</div>
             </div>
           </div>
           <div class="timeline-item">
-            <div class="time">13–15 min</div>
+            <div class="time">12–15 min</div>
             <div>
               <strong>Close with the throughline</strong>
-              <div>Emphasize that the work is connected by intentional design, collaboration, and commitment to student success.</div>
+              <div>Try: “Across all three areas, the throughline for me was really intentional design, creating experiences and systems that help students feel more confident, more capable, and more connected.”</div>
             </div>
           </div>
         </div>
@@ -510,6 +597,150 @@
           <blockquote>
             Overall, this year was less about adding more and more about being intentional, designing learning experiences and systems that help students feel supported, capable, and successful.
           </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery" class="section">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <h2>Artifacts and visuals</h2>
+            <p>These examples give you clickable proof points you can use while you present, instead of just talking about the work in the abstract.</p>
+          </div>
+        </div>
+
+        <div class="artifact-grid">
+          <article class="artifact-card">
+            <img src="18e80ca3-e89a-4ce6-bce6-032ad1e41590.png" alt="Screenshot of the Making Financial Decisions course page" />
+            <div class="artifact-body">
+              <h3>Course design artifact</h3>
+              <p>Use this to show how course design became more practical, structured, and student-friendly. Pair it with the EconConvo visual for a stronger storytelling moment.</p>
+              <div class="cta-row">
+                <a class="btn btn-secondary" href="https://northcentral.instructure.com/courses/85330" target="_blank" rel="noopener noreferrer">Open course artifact</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="artifact-card">
+            <img src="c9c6a3d0-bbf5-4872-8b6e-18aaa41d3d9b.png" alt="Orange discussion board prompt showing AI-related course activity" />
+            <div class="artifact-body">
+              <h3>AI and innovation artifact</h3>
+              <p>This is a concrete example of how AI-related learning was integrated into course design with purpose, not just novelty.</p>
+              <div class="cta-row">
+                <a class="btn btn-secondary" href="https://northcentral.instructure.com/courses/87560" target="_blank" rel="noopener noreferrer">Open AI artifact</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="artifact-card">
+            <img src="1000033979.jpg" alt="Group photo from WTCS Voices" />
+            <div class="artifact-body">
+              <h3>Leadership and WTCS Voices artifact</h3>
+              <p>Use this to talk about statewide collaboration, visibility, and how your work connects to broader student success conversations across the system.</p>
+              <div class="cta-row">
+                <a class="btn btn-secondary" href="https://ntc0-my.sharepoint.com/:w:/g/personal/munson_ntc_edu/IQCXM-F8OncGSIuZSDRoS5zjAWtpMVWS0Bs2LGv3lUlhexM?e=H9Oo4n" target="_blank" rel="noopener noreferrer">Open action plan</a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="artifact-grid" style="margin-top:18px;">
+          <article class="artifact-card">
+            <img src="Podcast photo 5.png" alt="Eco no Convo podcast graphic" />
+            <div class="artifact-body">
+              <h3>EconConvo visual</h3>
+              <p>Nice supporting visual for course redesign, engagement, and finding more creative ways to connect content with students.</p>
+            </div>
+          </article>
+
+          <article class="artifact-card">
+            <img src="ChatGPT Image Jan 23, 2026, 02_38_33 PM.png" alt="Illustration of Sarah Watson with a friendly robot having coffee" />
+            <div class="artifact-body">
+              <h3>AI course visual</h3>
+              <p>A fun, memorable visual you can use near the AI section to keep the site from feeling too formal or too text heavy.</p>
+            </div>
+          </article>
+
+          <article class="artifact-card">
+            <img src="Golf outing 1.jpg" alt="Group photo on a golf course during a community event" />
+            <div class="artifact-body">
+              <h3>Community outreach visual</h3>
+              <p>Use this by the broader impact section to show presence, relationship-building, and community engagement beyond the classroom.</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="artifact-grid" style="margin-top:18px;">
+          <article class="artifact-card">
+            <img src="1000002437.jpg" alt="Photo of two people smiling next to a costumed fox mascot" />
+            <div class="artifact-body">
+              <h3>WTCS Voices candid moment</h3>
+              <p>This can sit alongside the leadership section to make that statewide work feel more human, collaborative, and real.</p>
+            </div>
+          </article>
+
+          <article class="artifact-card">
+            <img src="Sarah Watson Nutitional Informaiton.png" alt="Creative poster titled Sarah Watson Civic Changemaker Blend" />
+            <div class="artifact-body">
+              <h3>Personal brand visual</h3>
+              <p>This one is optional, but honestly, it has personality. It could work near your close or as a fun final slide if you want a memorable ending.</p>
+            </div>
+          </article>
+
+          <article class="artifact-card">
+            <img src="Watson_headshot.jpg" alt="Headshot of Sarah Watson" />
+            <div class="artifact-body">
+              <h3>Presenter image</h3>
+              <p>Keep this in the hero and also here if you want a more personal, portfolio-style feel across the site.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="starters" class="section">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <h2>Sentence starters and section outline</h2>
+            <p>These are not scripts. They are flexible starting points so you can sound natural while still staying focused.</p>
+          </div>
+        </div>
+
+        <div class="starter-grid">
+          <article class="starter-card">
+            <h3>Student Experience</h3>
+            <ul>
+              <li>One of my biggest priorities this year was creating a student experience that felt both supportive and rigorous.</li>
+              <li>What mattered most to me in this area was...</li>
+              <li>A good example of that is...</li>
+              <li>I wanted students to feel...</li>
+              <li>What I noticed from this work was...</li>
+            </ul>
+          </article>
+
+          <article class="starter-card">
+            <h3>Course Design</h3>
+            <ul>
+              <li>In course design, I focused less on adding more and more on making learning clearer and more usable.</li>
+              <li>One redesign I am especially proud of is...</li>
+              <li>The reason this mattered was...</li>
+              <li>This helped move the course from...to...</li>
+              <li>I also explored innovation in a way that stayed tied to student need, especially through...</li>
+            </ul>
+          </article>
+
+          <article class="starter-card">
+            <h3>Broader Impact</h3>
+            <ul>
+              <li>Beyond my own classes, I also wanted to extend that same focus on student success into broader systems and partnerships.</li>
+              <li>A highlight here was...</li>
+              <li>This mattered because it connected my work to...</li>
+              <li>It also gave me the chance to collaborate around...</li>
+              <li>Overall, this section reflects how I contributed outside the classroom while still staying grounded in student success.</li>
+            </ul>
+          </article>
         </div>
       </div>
     </section>
