@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sarah Watson | FLIP Portfolio Highlights</title>
+  <style>
+    :root {
+      --bg: #f7f7fb;
+      --card: rgba(255,255,255,0.82);
+      --text: #1f2937;
+      --muted: #6b7280;
+      --accent: #5b6ee1;
+      --accent-2: #8b5cf6;
+      --line: #e5e7eb;
+      --shadow: 0 20px 40px rgba(31, 41, 55, 0.08);
+      --radius: 22px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(91,110,225,0.18), transparent 28%),
+        radial-gradient(circle at top right, rgba(139,92,246,0.15), transparent 22%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .hero {
+      padding: 56px 0 28px;
+    }
+
+    .hero-card {
+      background: linear-gradient(135deg, rgba(255,255,255,0.96), rgba(255,255,255,0.78));
+      border: 1px solid rgba(255,255,255,0.8);
+      backdrop-filter: blur(12px);
+      border-radius: 32px;
+      box-shadow: var(--shadow);
+      padding: 40px;
+      display: grid;
+      grid-template-columns: 1.3fr 0.9fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(91,110,225,0.1);
+      color: var(--accent);
+      border-radius: 999px;
+      padding: 8px 14px;
+      font-size: 0.92rem;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      line-height: 1.05;
+      margin: 0 0 16px;
+      letter-spacing: -0.04em;
+    }
+
+    .hero p {
+      margin: 0 0 22px;
+      color: var(--muted);
+      font-size: 1.06rem;
+      max-width: 62ch;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .btn {
+      appearance: none;
+      border: 0;
+      border-radius: 999px;
+      padding: 12px 18px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: white;
+      box-shadow: 0 12px 24px rgba(91,110,225,0.25);
+    }
+
+    .btn-secondary {
+      background: white;
+      color: var(--text);
+      border: 1px solid var(--line);
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+
+    .hero-side {
+      display: grid;
+      gap: 14px;
+    }
+
+    .stat-card {
+      background: rgba(255,255,255,0.9);
+      border: 1px solid rgba(255,255,255,0.9);
+      border-radius: 24px;
+      padding: 20px;
+      box-shadow: 0 10px 24px rgba(31,41,55,0.06);
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .stat-value {
+      font-size: 1.85rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .section {
+      padding: 26px 0;
+    }
+
+    .section-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: end;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(1.6rem, 2.8vw, 2.4rem);
+      letter-spacing: -0.03em;
+    }
+
+    .section-header p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 52ch;
+    }
+
+    .category-tabs {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 10px 0 22px;
+    }
+
+    .tab {
+      border: 1px solid var(--line);
+      background: white;
+      color: var(--text);
+      border-radius: 999px;
+      padding: 10px 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .tab.active {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: white;
+      border-color: transparent;
+    }
+
+    .panel {
+      display: none;
+      animation: fade 0.35s ease;
+    }
+
+    .panel.active { display: block; }
+
+    @keyframes fade {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,0.85);
+      backdrop-filter: blur(10px);
+      border-radius: var(--radius);
+      padding: 22px;
+      box-shadow: var(--shadow);
+      min-height: 100%;
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 1.1rem;
+    }
+
+    .card p {
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-size: 0.97rem;
+    }
+
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .pill {
+      background: rgba(91,110,225,0.09);
+      color: var(--accent);
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 0.86rem;
+      font-weight: 700;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 14px;
+      margin-top: 22px;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 18px;
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 18px;
+      box-shadow: 0 10px 22px rgba(31,41,55,0.04);
+    }
+
+    .timeline-item .time {
+      font-weight: 800;
+      color: var(--accent);
+    }
+
+    .spotlight {
+      margin-top: 26px;
+      background: linear-gradient(135deg, rgba(91,110,225,0.08), rgba(139,92,246,0.08));
+      border-radius: 28px;
+      padding: 26px;
+      border: 1px solid rgba(91,110,225,0.12);
+    }
+
+    .spotlight blockquote {
+      margin: 10px 0 0;
+      padding-left: 16px;
+      border-left: 4px solid rgba(91,110,225,0.4);
+      color: var(--text);
+      font-size: 1.04rem;
+    }
+
+    footer {
+      padding: 32px 0 54px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 920px) {
+      .hero-card,
+      .cards,
+      .timeline-item {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero-card,
+      .card,
+      .timeline-item,
+      .spotlight {
+        padding: 20px;
+      }
+
+      .container {
+        width: min(100% - 20px, 1120px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="container">
+      <div class="hero-card">
+        <div>
+          <div class="eyebrow">FLIP Portfolio Highlights</div>
+          <h1>Designing student-centered learning experiences</h1>
+          <p>
+            This page highlights the throughline of my work this year: creating meaningful student experiences,
+            strengthening course design, and extending that impact through collaboration, leadership, and community engagement.
+          </p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#highlights">Explore highlights</a>
+            <a class="btn btn-secondary" href="#presentation">15-minute talk flow</a>
+          </div>
+        </div>
+
+        <div class="hero-side">
+          <div class="stat-card">
+            <div class="stat-label">Presentation lens</div>
+            <div class="stat-value">3 focus areas</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Core theme</div>
+            <div class="stat-value">Student success</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Style</div>
+            <div class="stat-value">Clean, interactive, memorable</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="highlights" class="section">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <h2>Portfolio highlights</h2>
+            <p>Instead of walking through every item, this view focuses on the strongest examples from each area.</p>
+          </div>
+        </div>
+
+        <div class="category-tabs" role="tablist" aria-label="Portfolio categories">
+          <button class="tab active" data-panel="student">Student Experience</button>
+          <button class="tab" data-panel="design">Course Design</button>
+          <button class="tab" data-panel="impact">Broader Impact</button>
+        </div>
+
+        <div id="student" class="panel active">
+          <div class="cards">
+            <article class="card">
+              <h3>Connection builds confidence</h3>
+              <p>Strong communication, regular presence, and personalized feedback helped students feel supported, seen, and capable.</p>
+              <div class="pill-list">
+                <span class="pill">Announcements</span>
+                <span class="pill">Email support</span>
+                <span class="pill">Student confidence</span>
+              </div>
+            </article>
+            <article class="card">
+              <h3>Active and engaging learning</h3>
+              <p>Interactive strategies like H5P, scaffolded projects, escape rooms, and collaborative tools pushed learning beyond passive content consumption.</p>
+              <div class="pill-list">
+                <span class="pill">H5P</span>
+                <span class="pill">Padlet</span>
+                <span class="pill">Escape rooms</span>
+              </div>
+            </article>
+            <article class="card">
+              <h3>Structure supports success</h3>
+              <p>Clear modules, intentional pacing, and flexible formats supported diverse learners while maintaining high expectations.</p>
+              <div class="pill-list">
+                <span class="pill">Scaffolding</span>
+                <span class="pill">Clear modules</span>
+                <span class="pill">Diverse learners</span>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div id="design" class="panel">
+          <div class="cards">
+            <article class="card">
+              <h3>Cents &amp; Sensibility redesign</h3>
+              <p>The course shifted toward practical financial decision-making, scenario-based learning, and a capstone personal financial plan.</p>
+              <div class="pill-list">
+                <span class="pill">Real-world application</span>
+                <span class="pill">Financial wellness</span>
+                <span class="pill">Capstone</span>
+              </div>
+            </article>
+            <article class="card">
+              <h3>College 101 improvements</h3>
+              <p>Competencies were streamlined, assessment variety expanded, and H5P activities added to improve clarity and engagement.</p>
+              <div class="pill-list">
+                <span class="pill">Simplified competencies</span>
+                <span class="pill">Formative learning</span>
+                <span class="pill">Course refresh</span>
+              </div>
+            </article>
+            <article class="card">
+              <h3>Innovation with AI</h3>
+              <p>AI pilots and tools were used with purpose, to create more personalized practice, feedback, accessibility, and student support.</p>
+              <div class="pill-list">
+                <span class="pill">LearnWise</span>
+                <span class="pill">Cengage AI</span>
+                <span class="pill">Sora + Python</span>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div id="impact" class="panel">
+          <div class="cards">
+            <article class="card">
+              <h3>Support across systems</h3>
+              <p>Dual credit mentoring, College 101 work, and high school instruction extended learner support beyond a single classroom.</p>
+              <div class="pill-list">
+                <span class="pill">Dual credit</span>
+                <span class="pill">Mentoring</span>
+                <span class="pill">K-12 partnership</span>
+              </div>
+            </article>
+            <article class="card">
+              <h3>Leadership and collaboration</h3>
+              <p>Cross-program work, faculty support, and advisory participation helped connect general education to broader institutional goals.</p>
+              <div class="pill-list">
+                <span class="pill">Faculty mentoring</span>
+                <span class="pill">Program health</span>
+                <span class="pill">Collaboration</span>
+              </div>
+            </article>
+            <article class="card">
+              <h3>Community engagement</h3>
+              <p>Service through local leadership and community partnerships reflected a broader commitment to belonging, advocacy, and civic impact.</p>
+              <div class="pill-list">
+                <span class="pill">City Council</span>
+                <span class="pill">MOSAIC</span>
+                <span class="pill">Community partnerships</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="presentation" class="section">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <h2>15-minute talk flow</h2>
+            <p>A simple structure you can use while clicking through the page or speaking alongside it.</p>
+          </div>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="time">0–2 min</div>
+            <div>
+              <strong>Set the frame</strong>
+              <div>Introduce the throughline: student-centered design, course design, and broader impact.</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="time">2–6 min</div>
+            <div>
+              <strong>Student Experience</strong>
+              <div>Highlight communication, engagement strategies, and how structure builds confidence and persistence.</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="time">6–10 min</div>
+            <div>
+              <strong>Course Design</strong>
+              <div>Focus on practical redesign work, simplified pathways, and using innovation with purpose.</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="time">10–13 min</div>
+            <div>
+              <strong>Broader Impact</strong>
+              <div>Show how mentoring, partnerships, and service extend student success beyond the classroom.</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="time">13–15 min</div>
+            <div>
+              <strong>Close with the throughline</strong>
+              <div>Emphasize that the work is connected by intentional design, collaboration, and commitment to student success.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="spotlight">
+          <strong>Closing line idea</strong>
+          <blockquote>
+            Overall, this year was less about adding more and more about being intentional, designing learning experiences and systems that help students feel supported, capable, and successful.
+          </blockquote>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      Built as a single-file HTML page so it can be dropped into GitHub Pages as <code>index.html</code>.
+    </div>
+  </footer>
+
+  <script>
+    const tabs = document.querySelectorAll('.tab');
+    const panels = document.querySelectorAll('.panel');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const target = tab.dataset.panel;
+
+        tabs.forEach(t => t.classList.remove('active'));
+        panels.forEach(panel => panel.classList.remove('active'));
+
+        tab.classList.add('active');
+        document.getElementById(target).classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>
